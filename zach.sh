@@ -14,3 +14,7 @@ ffmpeg -i $1 $WAVFILE
 
 # Perform transcription
 curl -X POST -u apikey:$APIKEY --header "Content-Type: audio/wav" --data-binary @$WAVFILE "$URL/v1/recognize?model=es-MX_BroadbandModel" > $TRANSCRIPT
+
+# Convert to txt
+python convert_to_txt.py $TRANSCRIPT
+
